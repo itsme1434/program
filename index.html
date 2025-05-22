@@ -31,7 +31,205 @@ document.addEventListener('click', function(event) {
 });
     
 document.getElementById("myInput").value = `
-SUNNY LEON IN SAPTHAGIRI
+Full Stack Development Experiments (EXP 1 to 5)
+EXP-1a
+1a.js
+// Script to log "Hello, World!" to the console
+console.log("Hello, World!");
+
+// Script to calculate the sum of two numbers and display the result
+function calculateSum(a, b) {
+  return a + b;
+}
+
+if (typeof alert === "function") {
+  alert("The sum of 5 and 7 is: " + calculateSum(5, 7));
+} else {
+  console.log("The sum of 5 and 7 is: " + calculateSum(5, 7));
+}
+1a.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example</title>
+</head>
+<body>
+  <script src="1a.js"></script>
+</body>
+</html>
+EXP-1b
+1b.js
+let input = prompt("Enter 5 cities separated by commas:");
+let cities = input.split(',').map(city => city.trim());
+console.log("Initial cities:", cities);
+
+console.log("Total number of cities:", cities.length);
+
+let newCity = prompt("Enter a city to add to the end:");
+cities.push(newCity);
+console.log("Cities after adding a new one:", cities);
+
+console.log("Removing the first city:", cities[0]);
+cities.shift();
+console.log("Cities after removing the first one:", cities);
+
+let searchCity = prompt("Enter a city to find its index:");
+let cityIndex = cities.indexOf(searchCity);
+console.log("Index of " + searchCity + ":", cityIndex !== -1 ? cityIndex : "City not found");
+1b.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Cities Array</title>
+</head>
+<body>
+  <h1>Dynamic Cities Array</h1>
+  <script src="1b.js"></script>
+</body>
+</html>
+EXP-2
+2a.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Manipulation</title>
+  <script>
+    function isPalindrome1(str) {
+      for (let i = 0; i < str.length / 2; i++) {
+        if (str.charAt(i) !== str.charAt(str.length - 1 - i)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    let userInput = prompt("Enter a string:");
+    let lengthOfString = userInput.length;
+
+    let extractedWord = userInput.includes("JavaScript") ?
+      userInput.substring(userInput.indexOf("JavaScript"), userInput.indexOf("JavaScript") + "JavaScript".length) :
+      "JavaScript not found";
+
+    let newString = userInput.replace("JavaScript", "TypeScript");
+    let palindromeCheck = isPalindrome1(userInput);
+
+    console.log(`New String after Replacement: ${newString}`);
+
+    alert(`Length: ${lengthOfString}\nExtracted Word: ${extractedWord}\nNew String: ${newString}\nPalindrome: ${palindromeCheck}`);
+  </script>
+</head>
+<body></body>
+</html>
+EXP-3
+3.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Student Object</title>
+  <script>
+    function createStudent() {
+      let student = {
+        name: prompt("Enter the student's name:"),
+        grade: parseInt(prompt("Enter the student's grade:")),
+        subjects: prompt("Enter the student's subjects separated by commas:")
+                    .split(',')
+                    .map(subject => subject.trim())
+      };
+      return student;
+    }
+
+    function displayInfo(student) {
+      console.log("Student Details:");
+      for (let key in student) {
+        if (typeof student[key] !== 'function') {
+          console.log(`${key}: ${student[key]}`);
+        }
+      }
+      console.log("Passed:", student.passed ? "Yes" : "No");
+    }
+
+    let student = createStudent();
+    student.passed = student.grade >= 40;
+    displayInfo(student);
+  </script>
+</head>
+<body></body>
+</html>
+EXP-4
+4.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listeners Example</title>
+</head>
+<body>
+  <button id="clickButton">Click Me</button>
+  <img id="exampleImage" src="https://www.w3schools.com/html/img_chania.jpg"
+       alt="Example Image" width="200">
+
+  <script>
+    document.getElementById('clickButton').addEventListener('click', function () {
+      console.log("Button clicked!");
+    });
+
+    document.getElementById('exampleImage').addEventListener('mouseover', function () {
+      this.style.border = '5px solid red';
+    });
+
+    document.getElementById('exampleImage').addEventListener('mouseout', function () {
+      this.style.border = 'none';
+    });
+
+    document.addEventListener('keydown', function (event) {
+      console.log("Key pressed: " + event.key);
+    });
+  </script>
+</body>
+</html>
+EXP-5
+IssueList.jsx
+import React from 'react';
+
+const issues = [
+  { id: 1, title: 'Bug in Login', description: 'Error 404 on login', status: 'Open' },
+  { id: 2, title: 'UI Issue on Dashboard', description: 'Misaligned elements', status: 'Closed' },
+  { id: 3, title: 'API Timeout', description: 'Delayed response from server', status: 'Open' },
+];
+
+function IssueList() {
+  return (
+    <div>
+      <h1>Issue Tracker</h1>
+      <ul>
+        {issues.map(issue => (
+          <li key={issue.id}>
+            <h2>{issue.title}</h2>
+            <p>{issue.description}</p>
+            <p>Status: {issue.status}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default IssueList;
+App.jsx
+import React from 'react';
+import './App.css';
+import IssueList from './IssueList';
+
+function App() {
+  return (
+    <div>
+      <IssueList />
+    </div>
+  );
+}
+
+export default App;
 `
 
 function myFunction() {
